@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Vue.js Tutorial</title>
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+
+
+<!-- Setting attributes for the html elements with the v-bind directive -->
+    <body>
+        <div id="app">
+            <!-- creating a title to the message thats seen when mouse hovers over -->
+            <h1 v-bind:title="title">{{ message }}</h1>
+            <!-- binding image source, alt and title represent v-bind only with the colon-->
+            <img :src="url" :alt="title" :title="title">
+            <ul>
+                <!-- looping thru every item of a list/array eg. todos by calling each item todo -->
+                <li style="list-style-type:none" v-for="todo in todos">{{ todo.id }}  {{ todo.text }}</li>
+                <!-- run it x times according to the number in data -->
+                <li v-for="count in count">Make more todos</li>
+            </ul>
+        </div>
+    </body>
+ 
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: { 
+                message: 'Hello World',
+                // Include some JS functionality (date function) into the title
+                title: 'You loaded the page on ' + new Date(),
+                url: "http://www.weltfussballarchiv.com/images/logos/20130.png",
+                todos: [
+                    { text: 'Learn Vue', id: 1 },
+                    { text: 'Like the video', id: 2 },
+                    { text: 'Not gonna do it', id: 3}
+                ],
+                count: 10
+            }
+        })
+    </script>
+</html>
