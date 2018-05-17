@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Vue.js Tutorial</title>
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+
+    <style>
+        [v-cloak] {
+            background-color: red;
+        }
+    </style>
+    <body>
+        <div id="app">
+            <!-- double brackets for vue object -->
+            <h1>{{ message }}</h1> 
+            <!-- v- are directives -->
+            <h1 v-text="message"></h1>
+            <h1 v-html="intro"></h1>
+            <!-- You can hide an element with show -->
+            <h1 v-show="viewed">You've seen this</h1>
+            <!-- Remove an element from the DOM -->
+            <h1 v-if="viewed">This will be gone</h1>
+            <h1 v-else>not seeing it</h1>
+            <!-- Show exact text, not rendering anything -->
+            <h1 v-pre>{{ whatever }}</h1>
+            <!-- Render this text once, can't update the text in browser console -->
+            <h1 v-once>{{ message }}</h1>
+            <!-- waits to render until vue is completely loaded -->
+            <h1 v-cloak>{{ message }}</h1>
+        </div>
+    </body>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        // Initializing vue 
+        var app = new Vue({
+            // binding to the div element called app
+            el: '#app',
+            // dataobjects that vue handles (variable etc.)
+            data: {
+                message: 'Hello Vue world',
+                intro: "Welcome to to the party. <small> So fun! </small>",
+                viewed: true
+            }
+        })
+    </script>
+</html>
